@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://192.168.11.188:31185/iportal?characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: 123456
+test-case:
+  key: abcdefg
