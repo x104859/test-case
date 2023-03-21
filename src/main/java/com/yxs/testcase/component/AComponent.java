@@ -44,4 +44,8 @@ public class AComponent {
         }
         return userInfo;
     }
+
+    public void updateUserInfo(UserInfo userInfo){
+        userInfoMapper.updateUserInfo(userInfo);
+    }
 }

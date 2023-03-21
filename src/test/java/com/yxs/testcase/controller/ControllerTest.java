@@ -1,5 +1,6 @@
 package com.yxs.testcase.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.yxs.testcase.component.AComponent;
 import com.yxs.testcase.entity.UserInfo;
 import org.junit.Assert;
@@ -36,18 +37,28 @@ public class ControllerTest {
     }
 
     /**
-     * 使用http方法调用的方式来测试controller
+     * 使用http GET方法调用的方式来测试controller
      *
      * @throws Exception
      */
     @Test
-    public void controllerMvcTest() throws Exception {
+    public void getControllerMvcTest() throws Exception {
         Integer id = 1;
         Mockito.when(aComponent.normalMethod(id)).thenReturn(getManUserInfo());
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/api/user//info?id="+id))
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/api/user/info?id="+id))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
         String content = mvcResult.getResponse().getContentAsString();
         Assert.assertNotNull(content);
+    }
+
+    @Test
+    public void postControllerMvcTest() throws Exception {
+        UserInfo userInfo = getManUserInfo();
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/api/user//update")
+                .contentType(MediaType.APPLICATION_JSON).content(JSON.toJSONString(userInfo)))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+        String content = mvcResult.getResponse().getContentAsString();
+        Assert.assertTrue("success".equals(content));
     }
 
     private UserInfo getManUserInfo(){

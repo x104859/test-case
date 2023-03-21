@@ -13,7 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AComponentTest {
+public class SimpleTest {
     @Mock
     private UserInfoMapper userInfoMapper;
     @Mock
