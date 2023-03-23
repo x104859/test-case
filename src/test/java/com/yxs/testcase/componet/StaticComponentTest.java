@@ -33,8 +33,9 @@ public class StaticComponentTest {
         Subject localSubject = PowerMockito.mock(Subject.class);
         when(ThreadContext.getSubject()).thenReturn(localSubject);
 
-        Object localObject = userId;
-        when(localSubject.getPrincipal()).thenReturn(localObject);
+        PrincipalCollection principalCollection = PowerMockito.mock(PrincipalCollection.class);
+        when(localSubject.getPrincipals()).thenReturn(principalCollection);
+        when(principalCollection.getPrimaryPrincipal()).thenReturn("12345");
 
         String resultUserId = staticComponent.getUserId();
 

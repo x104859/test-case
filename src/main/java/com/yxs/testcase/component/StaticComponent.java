@@ -13,13 +13,7 @@ public class StaticComponent {
 
     public String getUserId(){
         Subject localSubject = ThreadContext.getSubject();
-        if (localSubject == null) {
-            return null;
-        }
-        Object localObject = localSubject.getPrincipal();
-        if (localObject != null) {
-            return localObject.toString();
-        }
-        return null;
+        String userId = (String) localSubject.getPrincipals().getPrimaryPrincipal();
+        return userId;
     }
 }
