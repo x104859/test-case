@@ -5,6 +5,8 @@ public class UserInfo {
     public String userName;
     public Integer age;
     public String sex;
+    public String nickname;
+    public String email;
 
     public Integer getId() {
         return id;
@@ -36,5 +38,21 @@ public class UserInfo {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
