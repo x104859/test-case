@@ -32,8 +32,9 @@
 			<version>2.7.5</version>
 		</dependency>
 
-
-		<!--<dependency>
+		<!-- 使用MockMvc发起请求时需要该依赖， Spring Boot 2.2.0版本开始引入 JUnit5 作为单元测试默认库
+		JUnit5和JUnit4之间会有冲突，这里屏蔽掉JUnit5-->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<exclusions>
@@ -51,13 +52,14 @@
 				</exclusion>
 			</exclusions>
 			<scope>test</scope>
-		</dependency>-->
+		</dependency>
+		<!-- junit4所需测试依赖 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- 使用powermock所需依赖 -->
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-module-junit4</artifactId>

@@ -48,4 +48,8 @@ public class AComponent {
     public void updateUserInfo(UserInfo userInfo){
         userInfoMapper.updateUserInfo(userInfo);
     }
+
+    public String getKey(){
+        return key;
+    }
 }

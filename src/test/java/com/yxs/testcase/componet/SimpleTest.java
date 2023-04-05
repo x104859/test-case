@@ -5,12 +5,14 @@ import com.yxs.testcase.component.BComponent;
 import com.yxs.testcase.dao.UserInfoMapper;
 import com.yxs.testcase.entity.UserInfo;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SimpleTest {
@@ -24,6 +26,12 @@ public class SimpleTest {
      */
     @InjectMocks
     AComponent aComponent;
+
+    @Before
+    public void intit(){
+        // 为aComponent注入对象
+        ReflectionTestUtils.setField(aComponent,"key","abcdefg");
+    }
 
     /**
      * 最常见的测试用例，mock返回值
@@ -74,7 +82,11 @@ public class SimpleTest {
         Assert.assertTrue(userInfo == null);
     }
 
-
+    @Test
+    public void keyTest(){
+        String key = aComponent.getKey();
+        Assert.assertTrue("abcdefg".endsWith(key));
+    }
 
     private UserInfo getManUserInfo(){
         UserInfo userInfo = new UserInfo();

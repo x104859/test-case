@@ -19,6 +19,11 @@ import static org.powermock.api.mockito.PowerMockito.when;
  * @date 2023/3/21
  * 静态mock测试用例
  */
+
+/**
+ * 静态Mock需要使用PowerMockRunner
+ * 并使用PrepareForTest，该测试代表不会实际执行ThreadContext这个类
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ThreadContext.class})
 public class StaticComponentTest {
